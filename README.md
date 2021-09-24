@@ -11,7 +11,7 @@ aunque debería funcionar también para Chrome o Chromium.
 [GM]: https://www.greasespot.net/
 [FF]: https://www.mozilla.org/es-ES/firefox/
 
-Una vez instalado el pulgin para [Firefox][GMFF] bastará con pulsar en
+Una vez instalado el [plugin para Firefox][GMFF] bastará con pulsar en
 el `.js`  correspondiente al scritp y éste se instalará automáticamente.
 
 [GMFF]:https://addons.mozilla.org/es/firefox/addon/greasemonkey/
