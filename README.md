@@ -24,7 +24,9 @@ sin necesidad de seleccionarlos uno a uno,
 lo que puede ahorrar mucho tiempo para grupos grandes.
 
 He creado un video explicativo que puedes visionar
-en [esta dirección](https://tuvideo.encanarias.info/videos/watch/8514a3d0-5c69-414f-9453-4a9f8e8303fe)
+en [esta dirección](https://tuvideo.encanarias.info/videos/watch/8514a3d0-5c69-414f-9453-4a9f8e8303fe).
+
+Enlace para instalación [aquí](https://github.com/Universidad-de-La-Laguna/GreaseMonkey_CampusVirtual/raw/master/A%C3%B1ade%20usuarios%20grupo%20Moodel/A%C3%B1ade%20usuarios%20grupo%20Moodel.user.js).
 
 ## Añade usuarios aulas Moodel
 
@@ -49,3 +51,5 @@ scritp anterior.
 
 **No funciona** si directamente en "*Participantes*" se le da
 al botón de "*Matricular usuarios*"
+
+Enlace para la instalación [aqui](https://github.com/Universidad-de-La-Laguna/GreaseMonkey_CampusVirtual/raw/master/A%C3%B1ade%20usuarios%20aulas%20Moodel/A%C3%B1ade%20usuarios%20aulas%20Moodel.user.js).
