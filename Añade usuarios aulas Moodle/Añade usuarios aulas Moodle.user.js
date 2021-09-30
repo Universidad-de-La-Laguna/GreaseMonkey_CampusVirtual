@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name     Añade usuarios aulas Moodel
+// @name     Añade usuarios aulas Moodle
 // @version  1
 // @include  https://campus*.ull.es/enrol/manual/manage.php*
 // @description   Autor: Alberto Hamilton 2021. Licencia: GPLv3.
@@ -63,27 +63,27 @@ function creaEstilos() {
 
 
 function añadeDeLista(event) {
- 
+
   console.log("Se pide añadir de lista");
-  
+
   const taLista = document.getElementById("listaemails");
   const btnAdd = document.getElementById("add");  // boton de Agregar
   const selAdd = document.getElementById("addselect");  // lista de usuarios
   const addSelSearch = document.getElementById("addselect_searchtext");  // text imput para buscar
   console.log(`Hay ${selAdd.length} alumnos disponible`);
-  
+
   selAdd.addEventListener('change', (event) => {
     console.log('Se actulizo select');
     console.log(`Hay ${selAdd.options.length} opciones`);
   });
-    
+
   // copiamos los emails
   const arrayEmails = taLista.value.split("\n").slice();
-  
-  
+
+
   console.log(`Tenemos ${arrayEmails.length} emails`);
   let indAAct = 0;
-  
+
   let numLineas = 0;
   let numEncontrados = 0;
 
@@ -109,12 +109,12 @@ function añadeDeLista(event) {
       }
     }
   };
-  
+
   function trataAlumno () {
 		// Tratamos la linea
 		const linAct = arrayEmails[indAAct];
     console.log(`Tratando linea "${linAct}"`);
-    
+
     if (linAct === "") {
       pasaSiguiente();
       return;
@@ -130,7 +130,7 @@ function añadeDeLista(event) {
 
     const email = arrEmail[0];
     console.log(`El email es ${email}`);
-    
+
     addSelSearch.value = `${email}@`;
     console.log(`Modificado valor imput`);
     // addSelSearch.dispatchEvent(new Event("change"));
@@ -138,7 +138,7 @@ function añadeDeLista(event) {
     addSelSearch.dispatchEvent(new KeyboardEvent('keyup',{'key':'@'}));
 
     console.log('Mandado evento de input');
-    
+
     setTimeout(() => {
 
       let indice = -1;
@@ -153,42 +153,42 @@ function añadeDeLista(event) {
       }
 
       if (indice < 0) {
-        arrayEmails[indAAct] = arrayEmails[indAAct] + ' NO ENCONTRADO';        
+        arrayEmails[indAAct] = arrayEmails[indAAct] + ' NO ENCONTRADO';
         pasaSiguiente();
         return;
       }
       numEncontrados++;
-      arrayEmails[indAAct] = selAdd.options[indice].label;        
+      arrayEmails[indAAct] = selAdd.options[indice].label;
 
       // NO es necesario lo siguiente, se selecciona automáticamente
       //selAdd.options[indice].selected = true;
 
       pasaSiguiente();
-    }, 2000); 
- 
+    }, 2000);
+
   };
-  
+
   trataAlumno();
 }
 
 
 function aniadeUsuarios() {
-  
+
   creaEstilos();
-  
+
   const botAdd = document.getElementById("addselect_clearbutton");
   const divPadre = botAdd.parentNode;
   const btnEle = document.createElement("button");
   btnEle.appendChild(document.createTextNode("Añadir de lista"));
   btnEle.setAttribute("id","botonAñadeLista");
   btnEle.setAttribute("type","button");
-  
+
   //Fijamos opciones
   document.getElementById("userselector_preserveselectedid").checked = true;
   document.getElementById("userselector_autoselectuniqueid").checked = true;
-  
+
   divPadre.appendChild(btnEle);
-  
+
   const divModal = document.createElement("div");
   // style="display: block;"
   divModal.innerHTML = `
@@ -203,11 +203,11 @@ function aniadeUsuarios() {
   divModal.classList.add('modal');
   divModal.setAttribute("id","modalAñade");
 	divPadre.appendChild(divModal);
-  
+
   btnEle.onclick = () => {
     divModal.style.display = 'block';
   }
-  
+
   const closeModal = document.getElementById("btnCloseModal");
   closeModal.onclick = () => {
     divModal.style.display = "none";

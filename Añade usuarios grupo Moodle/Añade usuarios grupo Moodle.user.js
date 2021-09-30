@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name     Añade usuarios grupo Moodel
+// @name     Añade usuarios grupo Moodle
 // @version  1
 // @include  https://campus*.ull.es/group/members.php*
 // @description   Autor: Alberto Hamilton 2020. Licencia: GPLv3.
@@ -62,26 +62,26 @@ function creaEstilos() {
 }
 
 function añadeDeLista(event) {
- 
+
   console.log("Se pide añadir de lista");
-  
+
   const taLista = document.getElementById("listaemails");
   const btnAdd = document.getElementById("add");
   const selAdd = document.getElementById("addselect");
   console.log(`Hay ${selAdd.length} alumnos disponible`);
-  
+
   selAdd.addEventListener('change', (event) => {
     console.log('Se actulizo select');
     console.log(`Hay ${selAdd.options.length} opciones`);
   });
-    
+
   // copiamos los emails
   const arrayEmails = taLista.value.split("\n").slice();
-  
-  
+
+
   console.log(`Tenemos ${arrayEmails.length} emails`);
   let indAAct = 0;
-  
+
   let numLineas = 0;
   let numEncontrados = 0;
 
@@ -107,12 +107,12 @@ function añadeDeLista(event) {
       }
     }
   };
-  
+
   function trataAlumno () {
 		// Tratamos la linea
 		const linAct = arrayEmails[indAAct];
     console.log(`Tratando linea "${linAct}"`);
-    
+
     if (linAct === "") {
       pasaSiguiente();
       return;
@@ -128,7 +128,7 @@ function añadeDeLista(event) {
 
     const email = arrEmail[0];
     console.log(`El email es ${email}`);
-    
+
     let indice = -1;
     for (let i = 0; i < selAdd.options.length; i++) {
       if (selAdd.options[i].label.includes(email)) {
@@ -137,36 +137,36 @@ function añadeDeLista(event) {
         break;
       }
     }
-   
+
     if (indice < 0) {
-      arrayEmails[indAAct] = arrayEmails[indAAct] + ' NO ENCONTRADO';        
+      arrayEmails[indAAct] = arrayEmails[indAAct] + ' NO ENCONTRADO';
       pasaSiguiente();
       return;
     }
     numEncontrados++;
-    arrayEmails[indAAct] = selAdd.options[indice].label;        
+    arrayEmails[indAAct] = selAdd.options[indice].label;
 		selAdd.options[indice].selected = true;
     pasaSiguiente();
- 
+
   };
-  
+
   trataAlumno();
 }
 
 
 function aniadeUsuarios() {
-  
+
   creaEstilos();
-  
+
   const botAdd = document.getElementById("addselect_clearbutton");
   const divPadre = botAdd.parentNode;
   const btnEle = document.createElement("button");
   btnEle.appendChild(document.createTextNode("Añadir de lista"));
   btnEle.setAttribute("id","botonAñadeLista");
   btnEle.setAttribute("type","button");
-  
+
   divPadre.appendChild(btnEle);
-  
+
   const divModal = document.createElement("div");
   // style="display: block;"
   divModal.innerHTML = `
@@ -181,11 +181,11 @@ function aniadeUsuarios() {
   divModal.classList.add('modal');
   divModal.setAttribute("id","modalAñade");
 	divPadre.appendChild(divModal);
-  
+
   btnEle.onclick = () => {
     divModal.style.display = 'block';
   }
-  
+
   const closeModal = document.getElementById("btnCloseModal");
   closeModal.onclick = () => {
     divModal.style.display = "none";

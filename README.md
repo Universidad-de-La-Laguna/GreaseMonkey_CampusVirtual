@@ -16,7 +16,7 @@ el `.js`  correspondiente al scritp y éste se instalará automáticamente.
 
 [GMFF]:https://addons.mozilla.org/es/firefox/addon/greasemonkey/
 
-## Añade usuarios grupo Moodel
+## Añade usuarios grupo Moodle
 
 Consiste en añadir estudiantes a un grupo a partir de la lista
 de sus direcciones de correo (alus)
@@ -26,9 +26,9 @@ lo que puede ahorrar mucho tiempo para grupos grandes.
 He creado un video explicativo que puedes visionar
 en [esta dirección](https://tuvideo.encanarias.info/videos/watch/8514a3d0-5c69-414f-9453-4a9f8e8303fe).
 
-Enlace para instalación [aquí](https://github.com/Universidad-de-La-Laguna/GreaseMonkey_CampusVirtual/raw/master/A%C3%B1ade%20usuarios%20grupo%20Moodel/A%C3%B1ade%20usuarios%20grupo%20Moodel.user.js).
+Enlace para instalación [aquí](https://github.com/Universidad-de-La-Laguna/GreaseMonkey_CampusVirtual/raw/master/A%C3%B1ade%20usuarios%20grupo%20Moodle/A%C3%B1ade%20usuarios%20grupo%20Moodle.user.js).
 
-## Añade usuarios aulas Moodel
+## Añade usuarios aulas Moodle
 
 Permite matricular
 estudiantes en un aula virtual
@@ -52,4 +52,4 @@ scritp anterior.
 **No funciona** si directamente en "*Participantes*" se le da
 al botón de "*Matricular usuarios*"
 
-Enlace para la instalación [aqui](https://github.com/Universidad-de-La-Laguna/GreaseMonkey_CampusVirtual/raw/master/A%C3%B1ade%20usuarios%20aulas%20Moodel/A%C3%B1ade%20usuarios%20aulas%20Moodel.user.js).
+Enlace para la instalación [aqui](https://github.com/Universidad-de-La-Laguna/GreaseMonkey_CampusVirtual/raw/master/A%C3%B1ade%20usuarios%20aulas%20Moodle/A%C3%B1ade%20usuarios%20aulas%20Moodle.user.js).
