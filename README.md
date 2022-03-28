@@ -59,7 +59,7 @@ Enlace para la instalación [aqui](https://github.com/Universidad-de-La-Laguna/G
 
 Sitúa el botón de *"Activa edición"*,
 y su correspondiente *"Desactiva edición"*,
-fijo en la parte superior de la página principal del aula virtual
-y en un color destacado.
+fijo en la parte superior de la página principal del aula virtual,
+en un color destacado y **siempre visible**.
 
 Enlace para la instalación [aqui](https://github.com/Universidad-de-La-Laguna/GreaseMonkey_CampusVirtual/raw/master/Boton%20edicion%20arriba/Boton%20edicion%20arriba.user.js)
