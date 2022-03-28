@@ -16,7 +16,7 @@ function colocaBotonEdicion() {
     const ba = buttons[i];
 		if(ba.innerText.match(/ctivar edición/)) {
     	console.log(`Encontrado boton con texto "${ba.innerText}"`);
-      ba.style.cssText += 'position:fixed;top:0px;left:200px;z-index:1000;border-color: white;';
+      ba.style.cssText += 'position: fixed; top: 4px; right: 370px; z-index: 1000; filter: invert(100%);';
     }
   }
 }
