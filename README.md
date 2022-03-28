@@ -53,3 +53,13 @@ scritp anterior.
 al botón de "*Matricular usuarios*"
 
 Enlace para la instalación [aqui](https://github.com/Universidad-de-La-Laguna/GreaseMonkey_CampusVirtual/raw/master/A%C3%B1ade%20usuarios%20aulas%20Moodle/A%C3%B1ade%20usuarios%20aulas%20Moodle.user.js).
+
+
+## Botón edición arriba
+
+Sitúa el botón de *"Activa edición"*,
+y su correspondiente *"Desactiva edición"*,
+fijo en la parte superior de la página principal del aula virtual
+y en un color destacado.
+
+Enlace para la instalación [aqui](https://github.com/Universidad-de-La-Laguna/GreaseMonkey_CampusVirtual/raw/master/Boton%20edicion%20arriba/Boton%20edicion%20arriba.user.js)
