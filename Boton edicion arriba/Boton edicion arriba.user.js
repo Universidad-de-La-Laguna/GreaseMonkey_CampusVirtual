@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name     Boton edicion arriba
 // @version  1
-// @include  https://campus*.ull.es/course/view.php*
+// @include  https://campus*.ull.es/*course/view.php*
 // @description   Autor: Alberto Hamilton 2020. Licencia: GPLv3.
 // @grant    none
 // ==/UserScript==

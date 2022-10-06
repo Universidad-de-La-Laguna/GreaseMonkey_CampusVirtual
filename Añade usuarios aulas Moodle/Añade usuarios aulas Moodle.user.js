@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name     Añade usuarios aulas Moodle
 // @version  1
-// @include  https://campus*.ull.es/enrol/manual/manage.php*
+// @include  https://campus*.ull.es/*enrol/manual/manage.php*
 // @description   Autor: Alberto Hamilton 2021. Licencia: GPLv3.
 // @grant    none
 // ==/UserScript==

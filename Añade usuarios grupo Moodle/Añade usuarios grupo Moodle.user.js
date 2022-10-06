@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name     Añade usuarios grupo Moodle
 // @version  1
-// @include  https://campus*.ull.es/group/members.php*
+// @include  https://campus*.ull.es/*group/members.php*
 // @description   Autor: Alberto Hamilton 2020. Licencia: GPLv3.
 // @grant    none
 // ==/UserScript==
