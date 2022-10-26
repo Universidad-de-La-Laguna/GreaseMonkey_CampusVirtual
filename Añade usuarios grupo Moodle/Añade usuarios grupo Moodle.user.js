@@ -63,6 +63,17 @@ function creaEstilos() {
   ref.parentNode.insertBefore(style, ref);
 }
 
+function cierraLimpiaModal() {
+  console.log(`cerramos y limpiamos la modal`);
+  document.getElementById("listaemails").value = "";
+  document.getElementById("btnAñade").disabled = false;
+  const btnAplica = document.getElementById("btnAplica")
+  btnAplica.disabled = true;
+  btnAplica.textContent = btAplicaTexto;
+  document.getElementById("addselect_clearbutton").click();
+  document.getElementById("modalAñade").style.display = "none";
+}
+
 function añadeDeLista(event) {
 
   console.log("Se pide añadir de lista");
@@ -107,7 +118,7 @@ function añadeDeLista(event) {
       btAplica.onclick = () => {
         console.log('Añadimos los alumnos');
 	      btnAdd.click();
-        document.getElementById("modalAñade").style.display = "none";
+        cierraLimpiaModal();
       }
     }
   };
@@ -122,7 +133,7 @@ function añadeDeLista(event) {
       return;
     }
     numLineas++;
-    const arrEmail = /alu[0-9]{10}/.exec(linAct);
+    const arrEmail = /([^@]+)@ull.*\.es/.exec(linAct);
     if (arrEmail === null) {
       console.log('No email en esta linea');
       arrayEmails[indAAct] = arrayEmails[indAAct] + ' NO RECONOCIDO';
@@ -130,7 +141,7 @@ function añadeDeLista(event) {
       return;
     }
 
-    const email = arrEmail[0];
+    const email = arrEmail[1];
     console.log(`El email es ${email}`);
 
     addSelSearch.value = `${email}@`;
@@ -167,7 +178,7 @@ function añadeDeLista(event) {
       //selAdd.options[indice].selected = true;
 
     pasaSiguiente();
-    }, 2000);
+    }, 1500);
 
   };
 
@@ -194,7 +205,7 @@ function aniadeUsuarios() {
   const divModal = document.createElement("div");
   // style="display: block;"
   divModal.innerHTML = `
-  <div class="modal-content">
+  <div id="modalAñade" class="modal-content">
     <span id="btnCloseModal" class="modal-close">&times;</span>
 		<label for="listaemails">Pega lista de e-mails de alumnado
       a añadir al grupo</label>
@@ -210,16 +221,6 @@ function aniadeUsuarios() {
 
   btnEle.onclick = () => {
     divModal.style.display = 'block';
-  }
-
-  function cierraLimpiaModal() {
-    console.log(`cerramos y limpiamos la modal`);
-    document.getElementById("listaemails").value = "";
-    document.getElementById("btnAñade").disabled = false;
-    const btnAplica = document.getElementById("btnAplica")
-    btnAplica.disabled = true;
-    btnAplica.textContent = btAplicaTexto;
-    divModal.style.display = "none";
   }
 
   const closeModal = document.getElementById("btnCloseModal");
