@@ -1,13 +1,15 @@
 // ==UserScript==
-// @name     Añade usuarios aulas Moodle
+// @name     Añade usuarios aula Moodle
 // @version  1
 // @include  https://campus*.ull.es/*enrol/manual/manage.php*
-// @description   Autor: Alberto Hamilton 2021. Licencia: GPLv3.
+// @description   Autor: Alberto Hamilton 2022. Licencia: GPLv3.
 // @grant    none
 // ==/UserScript==
 
 
 // Cogida idea de https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
+
+btAplicaTexto = 'Añade alumnado encontrado';
 
 function creaEstilos() {
   // Create our stylesheet
@@ -61,7 +63,6 @@ function creaEstilos() {
   ref.parentNode.insertBefore(style, ref);
 }
 
-
 function añadeDeLista(event) {
 
   console.log("Se pide añadir de lista");
@@ -69,11 +70,12 @@ function añadeDeLista(event) {
   const taLista = document.getElementById("listaemails");
   const btnAdd = document.getElementById("add");  // boton de Agregar
   const selAdd = document.getElementById("addselect");  // lista de usuarios
-  const addSelSearch = document.getElementById("addselect_searchtext");  // text imput para buscar
+  // text input para buscar
+  const addSelSearch = document.getElementById("addselect_searchtext");
   console.log(`Hay ${selAdd.length} alumnos disponible`);
 
   selAdd.addEventListener('change', (event) => {
-    console.log('Se actulizo select');
+    console.log('Se actualizo select');
     console.log(`Hay ${selAdd.options.length} opciones`);
   });
 
@@ -88,7 +90,7 @@ function añadeDeLista(event) {
   let numEncontrados = 0;
 
   function pasaSiguiente() {
-    // actualizadmos textaera
+    // actualizamos textaera
     taLista.value = arrayEmails.join('\n');
     // pasamos siguiente linea
     indAAct++;
@@ -101,7 +103,7 @@ function añadeDeLista(event) {
       document.getElementById("btnAñade").disabled = true;
       const btAplica = document.getElementById("btnAplica");
       btAplica.disabled = false;
-      btAplica.textContent = btAplica.textContent + ` (${numEncontrados} de ${numLineas})`;
+      btAplica.textContent =`${btAplicaTexto} (${numEncontrados} de ${numLineas})`;
       btAplica.onclick = () => {
         console.log('Añadimos los alumnos');
 	      btnAdd.click();
@@ -132,9 +134,9 @@ function añadeDeLista(event) {
     console.log(`El email es ${email}`);
 
     addSelSearch.value = `${email}@`;
-    console.log(`Modificado valor imput`);
+    console.log(`Modificado valor input`);
     // addSelSearch.dispatchEvent(new Event("change"));
-//    addSelSearch.dispatchEvent(new KeyboardEvent('keydown',{'key':'@'}));
+    // addSelSearch.dispatchEvent(new KeyboardEvent('keydown',{'key':'@'}));
     addSelSearch.dispatchEvent(new KeyboardEvent('keyup',{'key':'@'}));
 
     console.log('Mandado evento de input');
@@ -142,7 +144,8 @@ function añadeDeLista(event) {
     setTimeout(() => {
 
       let indice = -1;
-    	console.log(`Vamos a recorrer la lista de ${selAdd.options.length} elementos en busca de ${email}`);
+    	console.log(`Vamos a recorrer la lista de ${selAdd.options.length}`
+        + ` elementos en busca de ${email}`);
       for (let i = 0; i < selAdd.options.length; i++) {
 	      console.log(`→ La linea ${i} contiene '${selAdd.options[i].label}'`);
         if (selAdd.options[i].label.includes(email)) {
@@ -171,7 +174,6 @@ function añadeDeLista(event) {
   trataAlumno();
 }
 
-
 function aniadeUsuarios() {
 
   creaEstilos();
@@ -194,10 +196,12 @@ function aniadeUsuarios() {
   divModal.innerHTML = `
   <div class="modal-content">
     <span id="btnCloseModal" class="modal-close">&times;</span>
-		<label for="listaemails"> Pega lista de e-mails de alumnos a añadir al grupo</label>
-		<textarea id="listaemails" cols="26" rows="10" placeholder="aluXXXXXXXXX@ull.edu.es"></textarea>
-		<button id="btnAñade" type="button">Selecciona alumnos</button>
-		<button id="btnAplica" type="button" disabled="">Añade alumnos</button>
+		<label for="listaemails">Pega lista de e-mails de alumnado
+      a añadir al aula</label>
+		<textarea id="listaemails" cols="26" rows="10"
+      placeholder="aluXXXXXXXXX@ull.edu.es"></textarea>
+		<button id="btnAñade" type="button">Selecciona alumnado</button>
+		<button id="btnAplica" type="button" disabled="">${btAplicaTexto}</button>
   </div>
 	`;
   divModal.classList.add('modal');
@@ -208,15 +212,25 @@ function aniadeUsuarios() {
     divModal.style.display = 'block';
   }
 
+  function cierraLimpiaModal() {
+    console.log(`cerramos y limpiamos la modal`);
+    document.getElementById("listaemails").value = "";
+    document.getElementById("btnAñade").disabled = false;
+    const btnAplica = document.getElementById("btnAplica")
+    btnAplica.disabled = true;
+    btnAplica.textContent = btAplicaTexto;
+    divModal.style.display = "none";
+  }
+
   const closeModal = document.getElementById("btnCloseModal");
   closeModal.onclick = () => {
-    divModal.style.display = "none";
+    cierraLimpiaModal();
 	}
 
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
     if (event.target == divModal) {
-      divModal.style.display = "none";
+      cierraLimpiaModal();
     }
   }
 
