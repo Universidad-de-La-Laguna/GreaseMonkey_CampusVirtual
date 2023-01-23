@@ -75,7 +75,7 @@ Este script, cuando se está en modo edición en un aula virtual,
 crea un botón al principio de cada módulo etiquetado *"Oculta/Muestra"*.
 Al pulsar se abre una ventana modal en la que figura la lista de
 los items del módulo con un casilla *check* que indica si está visible
-u oculto, así como información de su tipo título.
+u oculto, así como información de su tipo y título.
 Se puede entonces cambiar el estado de los que se desee.
 También aparece en la parte superior las acciones *"Mostrar todos"* y
 *"Mostrar Nada*" que sitúan el valor correspondiente en todos los *check*.
