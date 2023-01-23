@@ -63,3 +63,29 @@ fijo en la parte superior de la página principal del aula virtual,
 en un color destacado y **siempre visible**.
 
 Enlace para la instalación [aqui](https://github.com/Universidad-de-La-Laguna/GreaseMonkey_CampusVirtual/raw/master/Boton%20edicion%20arriba/Boton%20edicion%20arriba.user.js)
+
+## Ocultar/Mostrar varios elementos a la vez
+
+En ocasiones queremos ocultar o mostrar un conjunto grande de elementos de
+un módulo del aula virtual.
+Por ejemplo, cuando abrimos un nuevo tema pero queremos ocultar la gran
+mayoría de los items que tenemos del curso pasado.
+
+Este script, cuando se está en modo edición en un aula virtual,
+crea un botón al principio de cada módulo etiquetado *"Oculta/Muestra"*.
+Al pulsar se abre una ventana modal en la que figura la lista de
+los items del módulo con un casilla *check* que indica si está visible
+u oculto, así como información de su tipo título.
+Se puede entonces cambiar el estado de los que se desee.
+También aparece en la parte superior las acciones *"Mostrar todos"* y
+*"Mostrar Nada*" que sitúan el valor correspondiente en todos los *check*.
+
+En la parte inferior está el botón *"Aplicar cambios"* que comienza el proceso
+para aplicar los cambios deseados en la visibilidad.
+Este proceso es lento ya que se te tiene que hacer una
+llamada a la API por cada elemento modificado.
+Se muestra una barra de progreso y los items que se llevan modificados.
+
+Al terminar se recarga la página.
+
+Enlace para la instalación [aqui](https://github.com/Universidad-de-La-Laguna/GreaseMonkey_CampusVirtual/raw/master/Moodle%20oculta%20muestra%20varios/Moodle%20oculta%20muestra%20varios.user.js)
