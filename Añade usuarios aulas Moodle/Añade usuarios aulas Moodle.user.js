@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name     Añade usuarios aula Moodle
-// @version  2
+// @version  3
 // @include  https://campus*.ull.es/*enrol/manual/manage.php*
 // @description   Autor: Alberto Hamilton 2022. Licencia: GPLv3.
 // @grant    none
@@ -15,46 +15,58 @@ function creaEstilos() {
   // Create our stylesheet
   var style = document.createElement('style');
   style.innerHTML = `
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 200px; /* Location of the box */
+
+.modalGSM {
+  display: none;
+  position: fixed;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  padding-top: 100px;
+  background-color: rgba(0,0,0,0.4);
+
+  z-index: 1050;
+  overflow: hidden;
+  outline: 0;
 }
 
-/* Modal Content */
-.modal-content {
-  display: block;
-  background-color: #fefefe;
+.modalGSM-content {
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 90%;
+  pointer-events: auto;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,.2);
+  outline: 0;
+
   margin: auto;
   padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
 }
 
-/* The Close Button */
-.modal-close {
+.modalGSM-close {
   color: #aaaaaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
 
-.modal-close:hover,
-.modal-close:focus {
+.modalGSM-close:hover,
+.modalGSM-close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
 }
-`;
+
+#listaemails {
+  flex: 1;
+  resize: vertical;
+}
+
+  `;
 
   // Get the first script tag
   var ref = document.querySelector('script');
@@ -107,7 +119,7 @@ function añadeDeLista(event) {
     indAAct++;
     console.log(`Considerando linea ${indAAct} de ${arrayEmails.length}`);
     if (indAAct < arrayEmails.length) {
-	    setTimeout(trataAlumno, 50);
+      setTimeout(trataAlumno, 50);
     } else {
       console.log("Ya están todos. Los añadimos");
       selAdd.dispatchEvent(new Event("change"));
@@ -117,15 +129,15 @@ function añadeDeLista(event) {
       btAplica.textContent =`${btAplicaTexto} (${numEncontrados} de ${numLineas})`;
       btAplica.onclick = () => {
         console.log('Añadimos los alumnos');
-	      btnAdd.click();
+        btnAdd.click();
         cierraLimpiaModal();
       }
     }
   };
 
   function trataAlumno () {
-		// Tratamos la linea
-		const linAct = arrayEmails[indAAct];
+    // Tratamos la linea
+    const linAct = arrayEmails[indAAct];
     console.log(`Tratando linea "${linAct}"`);
 
     if (linAct === "") {
@@ -155,10 +167,10 @@ function añadeDeLista(event) {
     setTimeout(() => {
 
       let indice = -1;
-    	console.log(`Vamos a recorrer la lista de ${selAdd.options.length}`
+      console.log(`Vamos a recorrer la lista de ${selAdd.options.length}`
         + ` elementos en busca de ${email}`);
       for (let i = 0; i < selAdd.options.length; i++) {
-	      console.log(`→ La linea ${i} contiene '${selAdd.options[i].label}'`);
+        console.log(`→ La linea ${i} contiene '${selAdd.options[i].label}'`);
         if (selAdd.options[i].label.includes(email)) {
           indice = i;
           console.log(`Email ${email} encontrado en posición ${indice}`);
@@ -205,19 +217,19 @@ function aniadeUsuarios() {
   const divModal = document.createElement("div");
   // style="display: block;"
   divModal.innerHTML = `
-  <div id="modalAñade" class="modal-content">
-    <span id="btnCloseModal" class="modal-close">&times;</span>
-		<label for="listaemails">Pega lista de e-mails de alumnado
+  <div id="modalAñade" class="modalGSM-content">
+    <span id="btnCloseModal" class="modalGSM-close">&times;</span>
+    <label for="listaemails">Pega lista de e-mails de alumnado
       a añadir al aula</label>
-		<textarea id="listaemails" cols="26" rows="10"
+    <textarea id="listaemails" cols="26" rows="10"
       placeholder="aluXXXXXXXXX@ull.edu.es"></textarea>
-		<button id="btnAñade" type="button">Selecciona alumnado</button>
-		<button id="btnAplica" type="button" disabled="">${btAplicaTexto}</button>
+    <button id="btnAñade" type="button">Selecciona alumnado</button>
+    <button id="btnAplica" type="button" disabled="">${btAplicaTexto}</button>
   </div>
-	`;
-  divModal.classList.add('modal');
+  `;
+  divModal.classList.add('modalGSM');
   divModal.setAttribute("id","modalAñade");
-	divPadre.appendChild(divModal);
+  divPadre.appendChild(divModal);
 
   btnEle.onclick = () => {
     divModal.style.display = 'block';
@@ -226,7 +238,7 @@ function aniadeUsuarios() {
   const closeModal = document.getElementById("btnCloseModal");
   closeModal.onclick = () => {
     cierraLimpiaModal();
-	}
+  }
 
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
@@ -235,7 +247,7 @@ function aniadeUsuarios() {
     }
   }
 
-	document.getElementById("btnAñade").onclick = añadeDeLista;
+  document.getElementById("btnAñade").onclick = añadeDeLista;
 
 }
 
