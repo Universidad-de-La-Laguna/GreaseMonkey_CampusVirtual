@@ -66,6 +66,34 @@ function creaEstilos() {
   resize: vertical;
 }
 
+.darkClass {
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 20;
+  height: 100%;
+  width: 100%;
+  background-repeat:no-repeat;
+  background-position:center;
+  position:absolute;
+  top: 0px;
+  left: 0px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.progressInfo {
+  width: 60%;
+}
+progress {
+  width: 100%;
+  height: 40px;
+  border: 10px;
+  border-color: black;
+}
+
+#progressDetail {
+  font-size: xxx-large;
+}
   `;
 
   // Get the first script tag
@@ -105,20 +133,31 @@ function añadeDeLista(event) {
   // copiamos los emails
   const arrayEmails = taLista.value.split("\n").slice();
 
-
-  console.log(`Tenemos ${arrayEmails.length} emails`);
+  const totLineas = arrayEmails.length;
+  console.log(`Tenemos ${totLineas} emails`);
   let indAAct = 0;
 
   let numLineas = 0;
   let numEncontrados = 0;
+
+  const pb = document.getElementById('progressChanged');
+  pb.setAttribute('max', totLineas);
+  let pbVal = 0;
+  pb.setAttribute('value', pbVal);
+
+  const divDarker = document.getElementById('darkLayer');
+  divDarker.style.display = 'flex';
+  const pDet = document.getElementById('progressDetail');
 
   function pasaSiguiente() {
     // actualizamos textaera
     taLista.value = arrayEmails.join('\n');
     // pasamos siguiente linea
     indAAct++;
-    console.log(`Considerando linea ${indAAct} de ${arrayEmails.length}`);
-    if (indAAct < arrayEmails.length) {
+    console.log(`Considerando linea ${indAAct} de ${totLineas}`);
+    if (indAAct < totLineas) {
+      pb.setAttribute('value', indAAct);
+      pDet.innerText = `${indAAct} / ${totLineas}`;
       setTimeout(trataAlumno, 50);
     } else {
       console.log("Ya están todos. Los añadimos");
@@ -127,6 +166,7 @@ function añadeDeLista(event) {
       const btAplica = document.getElementById("btnAplica");
       btAplica.disabled = false;
       btAplica.textContent =`${btAplicaTexto} (${numEncontrados} de ${numLineas})`;
+      divDarker.style.display = 'none';
       btAplica.onclick = () => {
         console.log('Añadimos los alumnos');
         btnAdd.click();
@@ -230,6 +270,17 @@ function aniadeUsuarios() {
   divModal.classList.add('modalGSM');
   divModal.setAttribute("id","modalAñade");
   divPadre.appendChild(divModal);
+
+  const divDarker = document.createElement("div");
+  divDarker.innerHTML = `
+    <div id="darkLayer" class="darkClass" style="display:none">
+      <div class="progressInfo">
+        <progress id="progressChanged" max="100" value="0"></progress>
+        <p id="progressDetail">? / ?</p>
+      </div>
+    </div>
+  `;
+  divModal.appendChild(divDarker);
 
   btnEle.onclick = () => {
     divModal.style.display = 'block';
