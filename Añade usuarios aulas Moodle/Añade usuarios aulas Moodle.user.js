@@ -146,8 +146,9 @@ function añadeDeLista(event) {
   pb.setAttribute('value', pbVal);
 
   const divDarker = document.getElementById('darkLayer');
-  divDarker.style.display = 'flex';
   const pDet = document.getElementById('progressDetail');
+  pDet.innerText = `${indAAct} / ${totLineas}`;
+  divDarker.style.display = 'flex';
 
   function pasaSiguiente() {
     // actualizamos textaera
@@ -261,7 +262,7 @@ function aniadeUsuarios() {
     <span id="btnCloseModal" class="modalGSM-close">&times;</span>
     <label for="listaemails">Pega lista de e-mails de alumnado
       a añadir al aula</label>
-    <textarea id="listaemails" cols="26" rows="10"
+    <textarea id="listaemails"
       placeholder="aluXXXXXXXXX@ull.edu.es"></textarea>
     <button id="btnAñade" type="button">Selecciona alumnado</button>
     <button id="btnAplica" type="button" disabled="">${btAplicaTexto}</button>
