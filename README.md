@@ -54,16 +54,6 @@ al botón de "*Matricular usuarios*"
 
 Enlace para la instalación [aqui](https://github.com/Universidad-de-La-Laguna/GreaseMonkey_CampusVirtual/raw/master/A%C3%B1ade%20usuarios%20aulas%20Moodle/A%C3%B1ade%20usuarios%20aulas%20Moodle.user.js).
 
-
-## Botón edición arriba
-
-Sitúa el botón de *"Activa edición"*,
-y su correspondiente *"Desactiva edición"*,
-fijo en la parte superior de la página principal del aula virtual,
-en un color destacado y **siempre visible**.
-
-Enlace para la instalación [aqui](https://github.com/Universidad-de-La-Laguna/GreaseMonkey_CampusVirtual/raw/master/Boton%20edicion%20arriba/Boton%20edicion%20arriba.user.js)
-
 ## Ocultar/Mostrar varios elementos a la vez
 
 En ocasiones queremos ocultar o mostrar un conjunto grande de elementos de
@@ -89,3 +79,37 @@ Se muestra una barra de progreso y los items que se llevan modificados.
 Al terminar se recarga la página.
 
 Enlace para la instalación [aqui](https://github.com/Universidad-de-La-Laguna/GreaseMonkey_CampusVirtual/raw/master/Moodle%20oculta%20muestra%20varios/Moodle%20oculta%20muestra%20varios.user.js)
+
+## Crear una rúbrica a partir de hoja de cálculo
+
+Una rúbrica compleja es difícil de gestionar en Moodle ya que, una vez
+creada, solo se pueden añadir nuevos indicadores al final.
+Si queremos
+colocarlo en otra posición es necesario ir pulsando la flecha de subir
+numerosas veces, lo que resulta tedioso.
+
+Este script permite crear una nueva rúbrica, desde cero, a partir de información
+que tengamos en una hoja de cálculo.
+La primer columna debe corresponder a la descripción del indicador y
+las siguientes deben contener la descripción del nivel seguido del símbolo `→`
+seguido del peso.
+Es posible que los indicadores tengan distinto número de niveles.
+
+Una vez se tenga definida la rúbrica en la hoja de cálculo con la estructura
+indicada,
+basta copiar y pegar en la ventana modal que activa el script al pulsar
+el botón *"Añade Rubrica"*.
+
+Al pegar, las columnas deben quedar separadas por el carácter tabulador.
+Si no es así, sería necesario exportar la hoja a un CSV, indicando que
+use el tabulador como separador de columnas,
+y luego copiar y pegar del CSV generado.
+
+## Botón edición arriba
+
+Sitúa el botón de *"Activa edición"*,
+y su correspondiente *"Desactiva edición"*,
+fijo en la parte superior de la página principal del aula virtual,
+en un color destacado y **siempre visible**.
+
+Enlace para la instalación [aqui](https://github.com/Universidad-de-La-Laguna/GreaseMonkey_CampusVirtual/raw/master/Boton%20edicion%20arriba/Boton%20edicion%20arriba.user.js)
