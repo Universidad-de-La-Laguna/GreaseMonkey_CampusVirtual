@@ -105,6 +105,8 @@ Si no es así, sería necesario exportar la hoja a un CSV, indicando que
 use el tabulador como separador de columnas,
 y luego copiar y pegar del CSV generado.
 
+Enlace para la instalación [aqui](https://github.com/Universidad-de-La-Laguna/GreaseMonkey_CampusVirtual/raw/master/CreaRubrica/CreaRubrica.user.js)
+
 ## Botón edición arriba
 
 Sitúa el botón de *"Activa edición"*,
